@@ -32,9 +32,6 @@ packages = [
 [tool.hatch.metadata]
 allow-direct-references = true
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/gradient"]
-
 [tool.mypy]
 ignore_missing_imports = true
 disable_error_code = ["F401"]

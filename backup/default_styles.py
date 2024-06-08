@@ -9,10 +9,8 @@ from rich.live import Live
 from rich.style import Style, StyleType
 from rich.table import Table
 from rich.text import Text
-from rich.console import Console
-from rich.traceback import install as tr_install
-from rich.theme import Theme
 
+from gradient.console import get_log
 
 DEFAULT_STYLES: dict[str, StyleType] = {
     "none": Style.null(),
@@ -751,12 +749,10 @@ GradientTheme",
     return table
 
 
-def example(record: bool = False) -> None:
+def example() -> None:
     """Print the styles table to the console."""
-    theme = Theme(DEFAULT_STYLES)
-    console = Console(theme=theme, record=record)
-    tr_install(console=console)
-
+    log = get_log()
+    console = log.console
     table = Table(
         title=formatted_title(),
         border_style="bold white",
@@ -776,7 +772,7 @@ GradientTheme",
     )
     table.add_column("[bold.cyan]Updated[/]", justify="center", vertical="middle")
 
-    with Live(table, console=console, refresh_per_second=10) as live:
+    with Live(table, console=console, refresh_per_second=1) as live:
         live.console.line(3)
         style_name: str
         style_definition: StyleType
