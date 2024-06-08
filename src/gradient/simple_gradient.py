@@ -1,5 +1,4 @@
 """Generate a simple gradient"""
-
 from __future__ import annotations
 
 import re
@@ -26,7 +25,6 @@ WHITESPACE_REGEX = re.compile(r"^\s+$")
 
 console = get_console()
 VERBOSE: bool = False
-
 
 class SimpleGradient(Text):
     """Text printed in a gradient from color1 to color2.

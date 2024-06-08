@@ -1,33 +1,25 @@
 """The high level module to create complex gradients to print to the console."""
 
-# ruff: noqa: F401
 import re
-from pathlib import Path
 from typing import List, Literal, Optional, Tuple, TypeAlias, Union
 
 import numpy as np
 from pydantic_core import PydanticCustomError
-from pydantic_extra_types.color import ColorType as PyColorType
-from rich.console import Console, JustifyMethod, OverflowMethod
+from rich.console import JustifyMethod, OverflowMethod
 from rich.control import strip_control_codes
-from rich.panel import Panel
 from rich.style import Style, StyleType
 from rich.text import Span, Text
-from rich.traceback import install as tr_install
 
-from gradient._simple_gradient import SimpleGradient
-from gradient.common import Color, ColorType, get_console
-from gradient.spectrum import Spectrum
-from gradient.theme import GRADIENT_TERMINAL_THEME
+from src.gradient.common import Color, ColorType, get_console
+from src.gradient.simple_gradient import SimpleGradient
+from src.gradient.spectrum import Spectrum
 
 GradientMethod = Literal["default", "list", "mono", "rainbow"]
 DEFAULT_JUSTIFY: JustifyMethod = "default"
 DEFAULT_OVERFLOW: OverflowMethod = "fold"
 WHITESPACE_REGEX = re.compile(r"^\s+$")
 
-
 console = get_console()
-VERBOSE: bool = False
 
 GradientColors: TypeAlias = Union[
     Optional[List[ColorType]], Optional[List[Color]], Optional[List[str]]
