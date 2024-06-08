@@ -1,13 +1,14 @@
 """A container for the default styles used by GradientConsole."""
 
-from typing import Dict, Optional
+from __future__ import annotations
+
 from time import sleep
+from typing import Dict, Optional
 
 from rich.live import Live
 from rich.style import Style, StyleType
 from rich.table import Table
 from rich.text import Text
-from rich.theme import Theme
 
 from gradient.color import get_console
 
@@ -750,8 +751,7 @@ GradientTheme",
 
 def example() -> None:
     """Print the styles table to the console."""
-    theme = Theme(DEFAULT_STYLES)
-    console = get_console(theme=theme)
+    console = get_console()
     table = Table(
         title=formatted_title(),
         border_style="bold white",
@@ -760,7 +760,7 @@ GradientTheme",
         caption_style="dim",
         caption_justify="right",
         show_lines=False,
-        row_styles=(["on #1f1f1f", "on #000000"])
+        row_styles=(["on #1f1f1f", "on #000000"]),
     )
     table.add_column("[bold.cyan]Styles[/]", justify="right", vertical="middle")
     table.add_column(
@@ -771,29 +771,31 @@ GradientTheme",
     )
     table.add_column("[bold.cyan]Updated[/]", justify="center", vertical="middle")
 
-
-    with Live(table,console=console, refresh_per_second=1) as live:
+    with Live(table, console=console, refresh_per_second=1) as live:
         live.console.line(3)
         style_name: str
         style_definition: StyleType
         for style_name, style_definition in DEFAULT_STYLES.items():
-
             style_definition_str = str(style_definition)
             assert style_name, f"Style cannot be be none: {style_definition_str}"
             edited = EDITED_STYLES.get(style_name)
             style: Style = Style.parse(style_definition_str)
-            
+
             definition: Text = Text(style_definition_str, style="#ffffff")
             if "grey" in style_name or "gray" in style_name:
                 note = Text(" *Supports alternate spelling*", style="italic dim")
                 definition.append_text(note)
-            if "dark_grey" in style_name or "dark_gray" in style_name or "gray" in style_name:
+            if (
+                "dark_grey" in style_name
+                or "dark_gray" in style_name
+                or "gray" in style_name
+            ):
                 continue
-            table.add_row(Text(style_name, style=style), definition, edited) 
+            table.add_row(Text(style_name, style=style), definition, edited)
             if style_name == "none" or style_name == "reset":
                 table.add_section()
         live.console.line(3)
-        
+
 
 if __name__ == "__main__":
     example()

@@ -24,9 +24,9 @@ from typing import (
     Literal,
     Optional,
     Tuple,
+    TypeAlias,
     Union,
     cast,
-    TypeAlias
 )
 
 from pydantic import GetJsonSchemaHandler
@@ -35,22 +35,29 @@ from pydantic.json_schema import JsonSchemaValue
 from pydantic_core import CoreSchema, PydanticCustomError, core_schema
 from pydantic_extra_types.color import Color as PyColor
 from pydantic_extra_types.color import ColorType as PyColorType
-from rich.color import Color as RichColor, ColorType as RichColorType
-from rich.color import ColorParseError, blend_rgb
+from rich.color import Color as RichColor
+from rich.color import ColorParseError
+from rich.color import ColorType as RichColorType
+from rich.color import blend_rgb
 from rich.color_triplet import ColorTriplet
 from rich.console import Console
 from rich.style import Style
 from rich.table import Table
 from rich.text import Text
-from rich.traceback import install as tr_install
 from rich.theme import Theme
+from rich.traceback import install as tr_install
 
 from gradient.log import Log
 from gradient.theme import GradientTheme
 
 GradientColorTuple: TypeAlias = Union[Tuple[int, int, int], Tuple[int, int, int, float]]
-ColorType: TypeAlias = Union[GradientColorTuple, str, "Color", PyColorType, RichColor, RichColorType]
-HslColorTuple: TypeAlias = Union[Tuple[float, float, float], Tuple[float, float, float, float]]
+ColorType: TypeAlias = Union[
+    GradientColorTuple, str, "Color", PyColorType, RichColor, RichColorType
+]
+HslColorTuple: TypeAlias = Union[
+    Tuple[float, float, float], Tuple[float, float, float, float]
+]
+
 
 def get_console(record: bool = False) -> Console:
     """Generate a rich console with rich tracebacks.
@@ -65,7 +72,6 @@ def get_console(record: bool = False) -> Console:
     console = Console(theme=theme, record=record)
     tr_install(console=console, show_locals=True)
     return console
-
 
 
 class GradientRGBA:
@@ -162,6 +168,7 @@ class GradientRGBA:
             ]
         )
 
+
 # these are not compiled here to avoid import slowdown, they'll be compiled the first time they're used, then cached
 _r_255 = r"(\d{1,3}(?:\.\d+)?)"
 _r_comma = r"\s*,\s*"
@@ -186,7 +193,6 @@ r_hsl_v4_style = (
 # colors where the two hex characters are the same, if all colors match this the short version of hex colors can be used
 repeat_colors = {int(c * 2, 16) for c in "0123456789abcdef"}
 rads = 2 * math.pi
-
 
 
 class Color:
@@ -954,8 +960,9 @@ class Color:
         Returns:
             An instance of `RGBA`.
         """
-        s_value, l_value = cls.parse_color_value(sat, 100), cls.parse_color_value(
-            light, 100
+        s_value, l_value = (
+            cls.parse_color_value(sat, 100),
+            cls.parse_color_value(light, 100),
         )
 
         h_value = float(h)

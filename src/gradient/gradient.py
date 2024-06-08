@@ -1,4 +1,5 @@
 """The high level module to create complex gradients to print to the console."""
+
 # ruff: noqa: F401
 import re
 from pathlib import Path
@@ -14,10 +15,10 @@ from rich.style import Style, StyleType
 from rich.text import Span, Text
 from rich.traceback import install as tr_install
 
-from gradient.color import ColorType
+from gradient._simple_gradient import SimpleGradient
+from gradient.common import Color, ColorType, get_console
 from gradient.spectrum import Spectrum
 from gradient.theme import GRADIENT_TERMINAL_THEME
-from gradient._simple_gradient import SimpleGradient, Color, get_console
 
 GradientMethod = Literal["default", "list", "mono", "rainbow"]
 DEFAULT_JUSTIFY: JustifyMethod = "default"
@@ -29,9 +30,7 @@ console = get_console()
 VERBOSE: bool = False
 
 GradientColors: TypeAlias = Union[
-    Optional[List[ColorType]],
-    Optional[List[Color]],
-    Optional[List[str]]
+    Optional[List[ColorType]], Optional[List[Color]], Optional[List[str]]
 ]
 
 
@@ -40,7 +39,7 @@ class Gradient(Text):
 
     Args:
         text ( `str` | `rich.text.Text` ): The text to print. Defaults to `""`.
-        colors ( `GradientColors`, optional ): An optional list of colors [1]_ from 
+        colors ( `GradientColors`, optional ): An optional list of colors [1]_ from
             which to make the Gradient. Defaults to None.
         rainbow ( `bool` ): Whether to print the gradient text in rainbow colors
             across the spectrum. Defaults to False.
@@ -49,7 +48,7 @@ class Gradient(Text):
         verbose ( `bool` ): Whether to print verbose output. Defaults to False.
         justify ( `JustifyMethod`, optional): Justify method: "left", "center",
             "full", "right". Defaults to None.
-        overflow (Optional[OverflowMethod]):  Overflow method: "crop", "fold", 
+        overflow (Optional[OverflowMethod]):  Overflow method: "crop", "fold",
             "ellipsis". Defaults to None.
         end (str, optional): Character to end text with. Defaults to "\\\\n".
         no_wrap (bool, optional): Disable text wrapping, or None for default.
@@ -59,7 +58,7 @@ class Gradient(Text):
         spans (List[Span], optional): A list of predefined style spans.
             Defaults to None.
 
-            
+
             .. [1] colors: List[Optional[Color|Tuple|str|int]
     """
 
@@ -84,7 +83,9 @@ class Gradient(Text):
     def __init__(
         self,
         text: Optional[str | Text] = "",
-        colors: Optional[List[str]]|Optional[List[ColorType]]|Optional[List[Color]] = None,
+        colors: Optional[List[str]]
+        | Optional[List[ColorType]]
+        | Optional[List[Color]] = None,
         *,
         rainbow: bool = False,
         hues: int = 4,
@@ -454,6 +455,7 @@ class Gradient(Text):
             spans=self._spans,
         )
 
+
 if __name__ == "__main__":  # pragma: no cover
     from gradient.color import get_console
 
@@ -464,12 +466,5 @@ if __name__ == "__main__":  # pragma: no cover
 Color class. From between the two, and taking advantage of numpy, gradient easily \
 automates printing to the console in gradient colors."
     console.print(
-        Gradient(
-            sample_text,
-            colors=colors,
-            style="bold"
-        ),
-        justify="center",
-        width=60
+        Gradient(sample_text, colors=colors, style="bold"), justify="center", width=60
     )
-

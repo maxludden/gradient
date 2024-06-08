@@ -1,5 +1,7 @@
 """Generate a simple gradient"""
 
+from __future__ import annotations
+
 import re
 from functools import partial
 from operator import itemgetter
@@ -15,7 +17,7 @@ from rich.segment import Segment
 from rich.style import Style, StyleType
 from rich.text import Span, Text
 
-from gradient.color import Color, PyColorType, get_console
+from gradient.common import Color, ColorType, get_console
 
 GradientMethod = Literal["default", "list", "mono", "rainbow"]
 DEFAULT_JUSTIFY: JustifyMethod = "default"
@@ -55,8 +57,8 @@ class SimpleGradient(Text):
         self,
         text: str | Text = "",
         *,
-        color1: PyColorType|Color,
-        color2: PyColorType|Color,
+        color1: ColorType | Color,
+        color2: ColorType | Color,
         justify: JustifyMethod = "default",
         overflow: OverflowMethod = "fold",
         no_wrap: bool = False,
@@ -80,7 +82,7 @@ class SimpleGradient(Text):
         )
 
         if not isinstance(color1, Color):
-            color1 = Color(color1)  
+            color1 = Color(color1)
             color2 = Color(color2)
 
         self.color1: Color = Color(color1)
@@ -290,9 +292,13 @@ class SimpleGradient(Text):
 if __name__ == "__main__":  # pragma: no cover
     console = Console()
     console.line(2)
-    sample_text = "SimpleGradient is a class that prints a `string` \nor `rich.text.Text` \
+    sample_text = (
+        "SimpleGradient is a class that prints a `string` \nor `rich.text.Text` \
 object as a gradient from \ncolor1 to color2 with an optional style."
-    gradient = SimpleGradient(sample_text, color1="lawngreen", color2="#0ff", style="bold")  # type: ignore
+    )
+    gradient = SimpleGradient(
+        sample_text, color1="lawngreen", color2="#0ff", style="bold"
+    )  # type: ignore
     gradient.highlight_regex(r"`(.+)`", "#af00ff")
     gradient.highlight_regex(r"`", style="#ffffff")
     console.print(gradient, justify="center")
