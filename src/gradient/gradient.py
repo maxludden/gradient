@@ -462,7 +462,7 @@ if __name__ == "__main__":  # pragma: no cover
     console = get_console(record=True)
     colors = ["#f00", "rgb(255, 153, 0)", "#ffff00", "lawngreen"]
     sample_text = "gradient.Gradient is a python library based upon the great \
-`textualize/rich` library. It also borrows heavily from pydantic-extra-types's \
+`rich` library. It also borrows heavily from pydantic-extra-types's \
 Color class. From between the two, and taking advantage of numpy, gradient easily \
 automates printing to the console in gradient colors."
     console.print(

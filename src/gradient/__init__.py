@@ -22,5 +22,3 @@ from rich.panel import Panel
 from rich.progress import Progress, TaskID
 from rich.style import Style, StyleType
 from rich.text import Text, Span, TextType
-
-from gradient.color import Color
