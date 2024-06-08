@@ -69,7 +69,27 @@
 		},
 		"files.associations": {
 			"*.yaml": "home-assistant"
-		}
+		},
+		"sqltools.connections": [
+			{
+				"name": "supergene",
+				"driver": "sqlite",
+				"server": "localhost",
+				"database": "/Users/maxludden/dev/py/supergene/db/supergene.db",
+				"username": "",
+				"password": "",
+				"port": 0,
+				"multipleStatements": true,
+				"ssl": false,
+				"isGlobal": true
+			},
+			{
+				"previewLimit": 50,
+				"driver": "SQLite",
+				"name": "supergene.db",
+				"database": "/Users/maxludden/dev/py/supergene/supergene.db"
+			}
+		]
 	},
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
