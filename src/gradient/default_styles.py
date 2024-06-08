@@ -717,11 +717,12 @@ def styles_table() -> Table:
     and if each style is new, or updated from rich, or unchanged."""
     table = Table(
         title=formatted_title(),
-        border_style="bold white",
-        caption="These styles are used when instantiating gradient.GradientTheme\
-GradientTheme",
+        border_style="bold #888888",
+        caption="These styles are used when instantiating rich.console.Console",
         caption_style="dim",
         caption_justify="right",
+        show_lines=False,
+        row_styles=(["on #1f1f1f", "on #000000"]),
     )
     table.add_column("[bold.cyan]Styles[/]", justify="right", vertical="middle")
     table.add_column(
@@ -757,50 +758,10 @@ def example(record: bool = False) -> None:
     console = Console(theme=theme, record=record)
     tr_install(console=console)
 
-    table = Table(
-        title=formatted_title(),
-        border_style="bold white",
-        caption="These styles are used when instantiating MaxGradient.gradient.\
-GradientTheme",
-        caption_style="dim",
-        caption_justify="right",
-        show_lines=False,
-        row_styles=(["on #1f1f1f", "on #000000"]),
+    console.print(
+        styles_table(),
+        justify="center"
     )
-    table.add_column("[bold.cyan]Styles[/]", justify="right", vertical="middle")
-    table.add_column(
-        "[bold.cyan]Description[/]",
-        justify="left",
-        width=70,
-        vertical="middle",
-    )
-    table.add_column("[bold.cyan]Updated[/]", justify="center", vertical="middle")
-
-    with Live(table, console=console, refresh_per_second=10) as live:
-        live.console.line(3)
-        style_name: str
-        style_definition: StyleType
-        for style_name, style_definition in DEFAULT_STYLES.items():
-            style_definition_str = str(style_definition)
-            assert style_name, f"Style cannot be be none: {style_definition_str}"
-            edited = EDITED_STYLES.get(style_name)
-            style: Style = Style.parse(style_definition_str)
-
-            definition: Text = Text(style_definition_str, style="#ffffff")
-            if "grey" in style_name or "gray" in style_name:
-                note = Text(" *Supports alternate spelling*", style="italic dim")
-                definition.append_text(note)
-            if (
-                "dark_grey" in style_name
-                or "dark_gray" in style_name
-                or "gray" in style_name
-            ):
-                continue
-            table.add_row(Text(style_name, style=style), definition, edited)
-            if style_name == "none" or style_name == "reset":
-                table.add_section()
-        live.console.line(3)
-
 
 
 def get_log(
