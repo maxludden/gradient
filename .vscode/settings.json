@@ -1,0 +1,11 @@
+{
+    "search.useIgnoreFiles": false,
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": false,
+        "**/CVS": false
+    },
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnusedImport": false
+    }
+}

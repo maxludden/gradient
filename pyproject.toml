@@ -1,0 +1,37 @@
+[project]
+name = "gradient"
+version = "0.0.1"
+description = "Gradient automates the printing gradient colored text to the console."
+authors = [
+    { name = "Max Ludden", email = "dev@maxludden.com" }
+]
+dependencies = [
+    "rich>=13.7.1",
+    "pydantic>=2.7.3",
+    "pydantic-extra-types>=2.8.0",
+    "loguru>=0.7.2",
+    "numpy>=1.26.4",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+packages=[
+    "src/gradient"
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gradient"]
+
+[tool.mypy]
+ignore_missing_imports = true
+disable_error_code = ["F401"]
