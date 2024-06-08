@@ -11,6 +11,7 @@ dependencies = [
     "pydantic-extra-types>=2.8.0",
     "loguru>=0.7.2",
     "numpy>=1.26.4",
+    "ipykernel>=6.29.4",
 ]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -21,7 +22,9 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+    "ipywidgets>=8.1.3",
+]
 packages = [
     "src/gradient"
 ]
@@ -35,3 +38,5 @@ packages = ["src/gradient"]
 [tool.mypy]
 ignore_missing_imports = true
 disable_error_code = ["F401"]
+
+[tool.ruff]
