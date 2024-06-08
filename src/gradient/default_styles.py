@@ -2,17 +2,17 @@
 
 from __future__ import annotations
 
-from time import sleep
 from typing import Dict, Optional
 
+from rich.console import Console
 from rich.live import Live
 from rich.style import Style, StyleType
 from rich.table import Table
 from rich.text import Text
-from rich.console import Console
-from rich.traceback import install as tr_install
 from rich.theme import Theme
+from rich.traceback import install as tr_install
 
+from gradient.log import Log
 
 DEFAULT_STYLES: dict[str, StyleType] = {
     "none": Style.null(),
@@ -802,6 +802,22 @@ GradientTheme",
         live.console.line(3)
 
 
+
+def get_log(
+    console: Optional[Console] = None,
+    width: Optional[int] = None,
+    record: bool = False) -> Log:
+    """Generate a log and console."""
+    if not width:
+        _console = Console()
+        width = _console.width
+    
+    console = console or Console(
+        theme=Theme(DEFAULT_STYLES),
+        record=record
+    )
+    tr_install(console=console)
+    return Log(console=console)
+
 if __name__ == "__main__":
     example()
-    sleep(20)
