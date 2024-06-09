@@ -843,7 +843,7 @@ if __name__ == "__main__":
 
     console = get_console()
 
-    log = Log(console=console, log_to_console="TRACE")
+    log = Log(console=console, log_to_console="TRACE", verbose=True)
     log.trace("Trace message.")
     log.debug("Debug message.")
     log.info("Info message.")
