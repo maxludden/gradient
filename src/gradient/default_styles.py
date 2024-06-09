@@ -2,18 +2,16 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from rich.console import Console
-from rich.live import Live
 from rich.style import Style, StyleType
 from rich.table import Table
 from rich.text import Text
 from rich.theme import Theme
 from rich.traceback import install as tr_install
 
-from gradient.log import Log
-
+global DEFAULT_STYLES
 DEFAULT_STYLES: dict[str, StyleType] = {
     "none": Style.null(),
     "reset": Style(
@@ -767,8 +765,9 @@ def example(record: bool = False) -> None:
 def get_log(
     console: Optional[Console] = None,
     width: Optional[int] = None,
-    record: bool = False) -> Log:
+    record: bool = False) -> Any:
     """Generate a log and console."""
+    from gradient.log import Log
     if not width:
         _console = Console()
         width = _console.width

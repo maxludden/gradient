@@ -1,5 +1,5 @@
 """Generate a simple gradient"""
-
+# ruff: noqa: F401
 import re
 from functools import partial
 from operator import itemgetter
@@ -15,17 +15,24 @@ from rich.segment import Segment
 from rich.style import Style, StyleType
 from rich.text import Span, Text
 
-from gradient.color import Color, PyColorType
-from gradient.log import Log
-from gradient.default_styles import get_log
+from gradient import (
+    Color,
+    ColorType,
+    Log,
+    get_log,
+    DEFAULT_STYLES,
+    Spectrum
+)
 
 GradientMethod = Literal["default", "list", "mono", "rainbow"]
 DEFAULT_JUSTIFY: JustifyMethod = "default"
 DEFAULT_OVERFLOW: OverflowMethod = "fold"
 WHITESPACE_REGEX = re.compile(r"^\s+$")
 
-log:Log = get_log()
-console = log.console
+
+_log = Log()
+log: Log = get_log()
+console: Console = log.console
 VERBOSE: bool = False
 
 
@@ -59,8 +66,8 @@ class SimpleGradient(Text):
         self,
         text: str | Text = "",
         *,
-        color1: PyColorType,
-        color2: PyColorType,
+        color1: ColorType,
+        color2: ColorType,
         justify: JustifyMethod = "default",
         overflow: OverflowMethod = "fold",
         no_wrap: bool = False,

@@ -8,8 +8,8 @@ from rich.style import Style
 from rich.table import Table
 from rich.text import Text
 
-from gradient.default_styles import get_log
-from gradient.color import Color
+from gradient import get_log
+from gradient.color import Color, ColorType
 
 
 log = get_log()
@@ -51,7 +51,7 @@ class Spectrum(List[Color]):
         "hotpink",
     )
 
-    HEX = (
+    HEX: Tuple[ColorType, ...]= (
         "#FF00FF",
         "#AF00FF",
         "#5F00FF",
@@ -72,7 +72,7 @@ class Spectrum(List[Color]):
         "#FF00AF"
     )
 
-    RGB = (
+    RGB: Tuple[ColorType, ...]= (
         "rgb(255, 0, 255)",
         "rgb(175, 0, 255)",
         "rgb(95, 0, 255)",

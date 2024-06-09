@@ -47,8 +47,7 @@ from rich.text import Text
 from rich.theme import Theme
 from rich.traceback import install as tr_install
 
-from gradient.log import Log
-from gradient.default_styles import DEFAULT_STYLES
+from gradient import DEFAULT_STYLES
 
 GradientColorTuple: TypeAlias = Union[Tuple[int, int, int], Tuple[int, int, int, float]]
 ColorType: TypeAlias = Union[
@@ -794,6 +793,7 @@ class Color:
         Raises:
             ValueError: If the input string cannot be parsed to an RGBA tuple.
         """
+        from gradient.log import Log
         log = Log(console=get_console())
         log.debug(f"Entered Color.parse_str({value})")
 
