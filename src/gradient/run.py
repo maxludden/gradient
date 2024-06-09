@@ -3,7 +3,11 @@ from os import environ, getenv
 from pathlib import Path
 from typing import Optional
 
+from rich.traceback import install as tr_install
 from rich.console import Console
+
+_console=Console()
+tr_install(console=_console)
 
 class RunNotFound(FileNotFoundError):
     """An exception to raise when the run count is invalid."""
@@ -20,20 +24,24 @@ class Run(metaclass=Singleton):
     """A class to keep track of the number of times a Python module is debugged or run."""
     
     SUPERGENE: Path = Path.home() / "dev" / "py" / "gradient"
-    RUNFILE = Path("/Users/maxludden/dev/py/gradient/logs/log.txt")
+    RUNFILE = Path(__file__).parent.parent.parent / 'logs' / 'run.txt'
     	
     def __init__(self, run: Optional[int] = None, verbose: bool = False) -> None:
         if run:
             if not isinstance(run, int):
                 raise TypeError("The run count must be an integer.")
             self.run = run
+            return
         else:
             run_env = getenv("RUN")
             if run_env:
-                self.run = int(run_env)
+                try:
+                    self.run = int(run_env)
+                except TypeError as te:
+                    raise TypeError(f"Env `RUN` must be a digit: {self.run}") from te
             else:
                 if not self.RUNFILE.exists():
-                    raise ValueError("The run file is not found.")
+                    raise RunNotFound("The run file is not found.")
                 with open(self.RUNFILE, "r") as f:
                     f_content = f.read()
                     if f_content.strip():  # Check if f_content is not empty
@@ -94,6 +102,8 @@ class Run(metaclass=Singleton):
         try:
             with open(self.RUNFILE, "r") as f:
                 run = int(f.read())
+        except TypeError as te:
+            raise TypeError(f"Unable to parse int from runfile: {run}") from te
         except FileNotFoundError:
             raise RunNotFound("The run file is not found.")
         except ValueError:

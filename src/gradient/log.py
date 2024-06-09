@@ -35,8 +35,8 @@ from rich.traceback import install as tr_install
 from gradient.run import Run, run
 
 HOME = Path.home()
-CWD = Path("/Users/maxludden/dev/py/supergene_gui")
-LOGS_DIR: Path = Path("/Users/maxludden/dev/py/supergene_gui/logs")
+CWD = Path(__file__).parent.parent.parent
+LOGS_DIR: Path = CWD / 'logs'
 FORMAT: str = """{time:hh:mm:ss:SSS A} | {extra[run_padding1]}Run {extra[run]}{extra[run_padding2]} | {file.name: ^13} | Line {line: ^5} | {level: ^8} ﰲ  {message}"""
 
 
@@ -117,7 +117,7 @@ class Log:
     FORMAT: str = """{time:hh:mm:ss:SSS A} | {extra[run_padding1]}Run {extra[run]}{extra[run_padding2]} | {file.name: ^13} | Line {line: ^5} | {level: ^8} ﰲ {message}"""
     HANDLERS: List[Dict[str, Any]] = [
         {
-            "sink": LOGS_DIR / "trace.log",
+            "sink": str((LOGS_DIR / "trace.log").resolve()),
             "level": "TRACE",
             "mode": "w",
             "format": FORMAT,
@@ -127,7 +127,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "debug.log",
+            "sink": str((LOGS_DIR / "debug.log").resolve()),
             "level": "DEBUG",
             "mode": "w",
             "format": FORMAT,
@@ -137,7 +137,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "info.log",
+            "sink":str((LOGS_DIR / "info.log").resolve()),
             "level": "INFO",
             "mode": "w",
             "format": FORMAT,
@@ -147,7 +147,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "success.log",
+            "sink": str((LOGS_DIR / "success.log").resolve()),
             "level": "SUCCESS",
             "mode": "w",
             "format": FORMAT,
@@ -157,7 +157,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "warning.log",
+            "sink": str((LOGS_DIR / "warning.log").resolve()),
             "level": "WARNING",
             "mode": "w",
             "format": FORMAT,
@@ -167,7 +167,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "error.log",
+            "sink": str((LOGS_DIR / "error.log").resolve()),
             "level": "ERROR",
             "mode": "w",
             "format": FORMAT,
@@ -177,7 +177,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink": LOGS_DIR / "critical.log",
+            "sink": str((LOGS_DIR / "critical.log").resolve()),
             "level": "CRITICAL",
             "mode": "w",
             "format": FORMAT,

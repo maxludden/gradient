@@ -24,8 +24,9 @@ decorator==5.1.1
     # via ipython
 executing==2.0.1
     # via stack-data
+iniconfig==2.0.0
+    # via pytest
 ipykernel==6.29.4
-    # via gradient
 ipython==8.25.0
     # via ipykernel
     # via ipywidgets
@@ -54,12 +55,15 @@ numpy==1.26.4
     # via gradient
 packaging==24.0
     # via ipykernel
+    # via pytest
 parso==0.8.4
     # via jedi
 pexpect==4.9.0
     # via ipython
 platformdirs==4.2.2
     # via jupyter-core
+pluggy==1.5.0
+    # via pytest
 prompt-toolkit==3.0.46
     # via ipython
 psutil==5.9.8
@@ -78,6 +82,9 @@ pydantic-extra-types==2.8.0
 pygments==2.18.0
     # via ipython
     # via rich
+pytest==8.2.2
+    # via pytest-mock
+pytest-mock==3.14.0
 python-dateutil==2.9.0.post0
     # via jupyter-client
 pyzmq==26.0.3
