@@ -187,6 +187,8 @@ class Log:
             "enqueue": True,
         },
     ]
+    CWD = Path(__file__).parent.parent.parent
+    LOGS_DIR: Path = CWD / 'logs'
 
     def __init__(
         self,

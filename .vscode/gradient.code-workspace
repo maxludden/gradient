@@ -124,105 +124,9 @@
 				}
 			},
 			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
 				"scope": "meta.structure.dictionary.json.comments",
 				"settings": {
 					"foreground": "#74f194"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.json.comments",
-				"settings": {
-					"foreground": "#abc6c0"
-				}
-			},
-			{
-				"scope": "meta.structure.dictionary.value.json.comments",
-				"settings": {
-					"foreground": "#9d4edd"
 				}
 			},
 			{
@@ -257,6 +161,49 @@
 			},
 			{
 				"name": "Fstring Varialbe",
+				"scope": "constant.character.format.placeholder.other.python",
+				"settings": {
+					"foreground": "#ff00ff"
+				}
+			},
+			{
+				"scope": "meta.structure.dictionary.json.comments",
+				"settings": {
+					"foreground": "#74f194"
+				}
+			},
+			{
+				"scope": "meta.structure.dictionary.value.json.comments",
+				"settings": {
+					"foreground": "#9d4edd"
+				}
+			},
+			{
+				"scope": "source.json.comments",
+				"settings": {
+					"foreground": "#abc6c0"
+				}
+			},
+			{
+				"scope": "punctuation.support.type.property-name.begin",
+				"settings": {
+					"foreground": "#9ebdff"
+				}
+			},
+			{
+				"scope": "punctuation.support.type.property-name.end",
+				"settings": {
+					"foreground": "#9ebdff"
+				}
+			},
+			{
+				"scope": "constant.language",
+				"settings": {
+					"foreground": "#afff00"
+				}
+			},
+			{
+				"name": "F-string Varialbe",
 				"scope": "constant.character.format.placeholder.other.python",
 				"settings": {
 					"foreground": "#ff00ff"
