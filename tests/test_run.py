@@ -1,7 +1,7 @@
 import pytest
 from os import getenv
 from unittest.mock import patch, mock_open
-from gradient.run import Run, RunNotFound
+from rich_gradient.run import Run, RunNotFound
 
 def test_singleton():
     run1 = Run()

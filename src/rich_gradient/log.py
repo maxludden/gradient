@@ -32,7 +32,7 @@ from rich.table import Table
 from rich.text import Text
 from rich.traceback import install as tr_install
 
-from gradient.run import Run, run
+from rich_gradient.run import Run, run
 
 HOME = Path.home()
 CWD = Path(__file__).parent.parent.parent

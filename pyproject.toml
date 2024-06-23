@@ -1,7 +1,7 @@
 [project]
-name = "gradient"
+name = "rich_gradient"
 version = "0.0.1"
-description = "Gradient automates the printing gradient colored text to the console."
+description = "Rich_ryeGradient automates the printing gradient colored text to the console."
 authors = [
     { name = "Max Ludden", email = "dev@maxludden.com" }
 ]
@@ -11,6 +11,9 @@ dependencies = [
     "pydantic-extra-types>=2.8.0",
     "loguru>=0.7.2",
     "numpy>=1.26.4",
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.5.27",
+    "mkdocstrings>=0.25.1",
 ]
 readme = "README.md"
 requires-python = ">=3.10"
@@ -28,7 +31,7 @@ dev-dependencies = [
     "pytest>=8.2.2",
 ]
 packages = [
-    "src/gradient"
+    "src/rich_gradient"
 ]
 
 [tool.hatch.metadata]

@@ -7,7 +7,7 @@ from rich.table import Table
 from rich.terminal_theme import TerminalTheme
 from rich.theme import Theme
 
-from gradient.default_styles import DEFAULT_STYLES, styles_table
+from rich_gradient.default_styles import DEFAULT_STYLES, styles_table
 
 _ColorTuple = Tuple[int, int, int]
 

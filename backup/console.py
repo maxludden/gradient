@@ -4,8 +4,8 @@ from rich.console import Console
 from rich.traceback import install as tr_install
 from rich.theme import Theme
 
-from gradient.log import Log
-from gradient.default_styles import DEFAULT_STYLES
+from rich_gradient.log import Log
+from rich_gradient.default_styles import DEFAULT_STYLES
 
 theme = Theme(DEFAULT_STYLES)
 

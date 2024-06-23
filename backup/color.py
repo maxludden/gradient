@@ -47,8 +47,8 @@ from rich.text import Text
 from rich.theme import Theme
 from rich.traceback import install as tr_install
 
-from gradient.log import Log
-from gradient.theme import GradientTheme
+from rich_gradient.log import Log
+from rich_gradient.theme import GradientTheme
 
 GradientColorTuple: TypeAlias = Union[Tuple[int, int, int], Tuple[int, int, int, float]]
 ColorType: TypeAlias = Union[

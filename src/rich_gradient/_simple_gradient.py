@@ -15,7 +15,7 @@ from rich.segment import Segment
 from rich.style import Style, StyleType
 from rich.text import Span, Text
 
-from gradient import (
+from rich_gradient import (
     Color,
     ColorType,
     Log,

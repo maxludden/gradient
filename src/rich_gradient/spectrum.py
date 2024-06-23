@@ -9,7 +9,7 @@ from rich.table import Table
 from rich.text import Text
 from pydantic_extra_types.color import ColorType
 
-from gradient.color import Color
+from rich_gradient.color import Color
 
 
 class Spectrum(List[Color]):

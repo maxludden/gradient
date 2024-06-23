@@ -767,7 +767,7 @@ def get_log(
     width: Optional[int] = None,
     record: bool = False) -> Any:
     """Generate a log and console."""
-    from gradient.log import Log
+    from rich_gradient.log import Log
     if not width:
         _console = Console()
         width = _console.width

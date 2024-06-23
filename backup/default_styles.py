@@ -10,7 +10,7 @@ from rich.style import Style, StyleType
 from rich.table import Table
 from rich.text import Text
 
-from gradient.console import get_log
+from rich_gradient.console import get_log
 
 DEFAULT_STYLES: dict[str, StyleType] = {
     "none": Style.null(),

@@ -1,7 +1,7 @@
 import pytest
 
 from pathlib import Path
-from gradient.log import Log
+from rich_gradient.log import Log
 from rich.console import Console
 
 log = Log()

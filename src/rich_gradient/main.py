@@ -17,8 +17,8 @@ from rich.panel import Panel
 from rich.style import Style, StyleType
 from rich.text import Span, Text, TextType
 
-from gradient import Color, ColorType, Spectrum, get_log, Log, GRADIENT_TERMINAL_THEME
-from gradient._simple_gradient import SimpleGradient
+from rich_gradient import Color, ColorType, Spectrum, get_log, Log, GRADIENT_TERMINAL_THEME
+from rich_gradient._simple_gradient import SimpleGradient
 
 GradientMode = Literal["default", "list", "mono", "rainbow"]
 GradientColors: TypeAlias = Union[
