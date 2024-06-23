@@ -9,7 +9,7 @@ from rich.table import Table
 from rich.text import Text
 
 from gradient import get_log
-from gradient.color import Color, ColorType
+from gradient._color import Color, ColorType
 
 
 log = get_log()

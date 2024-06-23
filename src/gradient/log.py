@@ -119,7 +119,7 @@ class Log:
         {
             "sink": str((LOGS_DIR / "trace.log").resolve()),
             "level": "TRACE",
-            "mode": "w",
+            "mode": "a",
             "format": FORMAT,
             "backtrace": True,
             "diagnose": True,
@@ -129,7 +129,7 @@ class Log:
         {
             "sink": str((LOGS_DIR / "debug.log").resolve()),
             "level": "DEBUG",
-            "mode": "w",
+            "mode": "a",
             "format": FORMAT,
             "backtrace": True,
             "diagnose": True,

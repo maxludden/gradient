@@ -1,0 +1,6 @@
+01:10:16:013 AM |     Run 63     |    log.py     | Line  616  | WARNING  ﰲ Warning message.
+01:10:16:014 AM |     Run 63     |    log.py     | Line  627  |  ERROR   ﰲ Error message.
+01:10:16:014 AM |     Run 63     |    log.py     | Line  638  | CRITICAL ﰲ Critical message.
+01:10:17:041 AM |     Run 63     |    log.py     | Line  868  | WARNING  ﰲ Lazy message.
+01:10:17:041 AM |     Run 63     |    log.py     | Line  869  |  ERROR   ﰲ Lazy message.
+01:10:17:042 AM |     Run 63     |    log.py     | Line  870  | CRITICAL ﰲ Lazy message.

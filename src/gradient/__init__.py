@@ -2,7 +2,7 @@
 from gradient.run import Run, run
 from gradient.log import Log, log
 from gradient.default_styles import DEFAULT_STYLES, get_log
-from gradient.color import (
+from gradient._color import (
     Color,
     ColorType,
     ColorTriplet,

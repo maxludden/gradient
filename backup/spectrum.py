@@ -8,7 +8,7 @@ from rich.table import Table
 from rich.text import Text
 from rich.traceback import install as tr_install
 
-from gradient.color import Color
+from gradient._color import Color
 from gradient.theme import GradientTheme
 
 console = Console()
