@@ -1,4 +1,5 @@
 """Generate a simple gradient"""
+
 # ruff: noqa: F401
 import re
 from functools import partial
@@ -15,14 +16,7 @@ from rich.segment import Segment
 from rich.style import Style, StyleType
 from rich.text import Span, Text
 
-from rich_gradient import (
-    Color,
-    ColorType,
-    Log,
-    get_log,
-    DEFAULT_STYLES,
-    Spectrum
-)
+from rich_gradient import Color, ColorType, Log, get_log, DEFAULT_STYLES, Spectrum
 
 GradientMethod = Literal["default", "list", "mono", "rainbow"]
 DEFAULT_JUSTIFY: JustifyMethod = "default"

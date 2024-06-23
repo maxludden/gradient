@@ -12,6 +12,7 @@ A few colors have multiple names referring to the sames colors, eg. `grey` and `
 In these cases the _last_ color when sorted alphabetically takes preferences,
 eg. `Color((0, 255, 255)).as_named() == 'cyan'` because "cyan" comes after "aqua".
 """
+
 # ruff: noqa: F401
 import math
 import re
@@ -29,6 +30,7 @@ from rich.style import Style
 from rich.table import Table
 from rich.text import Text
 from rich.color_triplet import ColorTriplet
+
 
 class Color(PyColor):
     def __init__(self, value: PyColorType) -> None:
@@ -192,7 +194,7 @@ class Color(PyColor):
     @property
     def hex(self) -> str:
         return self.as_hex()
-    
+
     @property
     def rgb(self) -> str:
         return self.as_rgb()

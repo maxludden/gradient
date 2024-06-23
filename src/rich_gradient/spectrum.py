@@ -1,5 +1,3 @@
-
-
 from __future__ import annotations
 
 from typing import List, Tuple
@@ -47,7 +45,7 @@ class Spectrum(List[Color]):
         "hotpink",
     )
 
-    HEX: Tuple[ColorType, ...]= (
+    HEX: Tuple[ColorType, ...] = (
         "#FF00FF",
         "#AF00FF",
         "#5F00FF",
@@ -65,10 +63,10 @@ class Spectrum(List[Color]):
         "#FF4B00",
         "#FF0000",
         "#FF005F",
-        "#FF00AF"
+        "#FF00AF",
     )
 
-    RGB: Tuple[ColorType, ...]= (
+    RGB: Tuple[ColorType, ...] = (
         "rgb(255, 0, 255)",
         "rgb(175, 0, 255)",
         "rgb(95, 0, 255)",
@@ -86,7 +84,7 @@ class Spectrum(List[Color]):
         "rgb(255, 75, 0)",
         "rgb(255, 0, 0)",
         "rgb(255, 0, 95)",
-        "rgb(255, 0, 175)"
+        "rgb(255, 0, 175)",
     )
 
     def __init__(self) -> None:
@@ -114,12 +112,7 @@ class Spectrum(List[Color]):
             title="[b #ffffff]Gradient Colors[/]",
             show_footer=False,
             show_header=True,
-            row_styles=(
-                [
-                    "on #1f1f1f",
-                    "on #000000"
-                ]
-            )
+            row_styles=(["on #1f1f1f", "on #000000"]),
         )
         for color in self.COLORS:
             assert color.triplet, "ColorTriplet must not be None"
@@ -149,6 +142,7 @@ class Spectrum(List[Color]):
 
 if __name__ == "__main__":
     from rich.console import Console
+
     console = Console(width=64)
     console.line(2)
     console.print(Spectrum(), justify="center")

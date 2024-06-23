@@ -6,26 +6,31 @@ from typing import Optional
 from rich.traceback import install as tr_install
 from rich.console import Console
 
-_console=Console()
+_console = Console()
 tr_install(console=_console)
+
 
 class RunNotFound(FileNotFoundError):
     """An exception to raise when the run count is invalid."""
+
     pass
 
+
 class Singleton(type):
-    _instances = {} # type: ignore
+    _instances = {}  # type: ignore
+
     def __call__(cls, *args, **kwargs):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
+
 class Run(metaclass=Singleton):
     """A class to keep track of the number of times a Python module is debugged or run."""
-    
+
     SUPERGENE: Path = Path.home() / "dev" / "py" / "gradient"
-    RUNFILE = Path(__file__).parent.parent.parent / 'logs' / 'run.txt'
-    	
+    RUNFILE = Path(__file__).parent.parent.parent / "logs" / "run.txt"
+
     def __init__(self, run: Optional[int] = None, verbose: bool = False) -> None:
         if run:
             if not isinstance(run, int):
@@ -63,14 +68,13 @@ class Run(metaclass=Singleton):
     def run(self) -> int:
         """The run count."""
         return self._run
-    
+
     @run.setter
     def run(self, value: int) -> None:
         """Set the run count."""
         if not isinstance(value, int):
             raise TypeError("The run count must be an integer.")
         self._run = value
-
 
     def increment_run(self, verbose: bool = False) -> None:
         """Increment the run count."""
@@ -84,7 +88,7 @@ class Run(metaclass=Singleton):
         if verbose:
             _console.print(f"Run ENVVAR: [i b #00afff]{getenv("RUN")}[/]")
         self.write_runfile()
-        
+
     def read_envvar(self) -> int:
         """Read the run count from environmental variable or from a file."""
         run = getenv("RUN")
@@ -92,7 +96,7 @@ class Run(metaclass=Singleton):
             raise ValueError("The run environmental varialbe is not set.")
         self.run = int(run)
         return self.run
-    
+
     def write_envvar(self) -> None:
         """Write the run count to an environmental variable."""
         environ["RUN"] = str(self._run)
@@ -109,26 +113,25 @@ class Run(metaclass=Singleton):
         except ValueError:
             raise RunNotFound("The run file is invalid.")
         return run
-    
+
     def write_runfile(self) -> None:
         """Write the run count to a file.add()
-        
+
         Args:
             run (int): The run count.
         """
         with open(self.RUNFILE, "w") as f:
             f.write(str(self._run))
 
+
 # Register the increment_run_count method to be called when the program exits
 global run
 run: Run = Run()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run = Run()
-    console=Console()
+    console = Console()
     console.clear()
     console.print(f"Run: [b i #00afff]{run.run}[/]")
     console.line(2)
-    
-

@@ -57,7 +57,7 @@ class Spectrum(List[Color]):
         "#FF4B00",
         "#FF0000",
         "#FF005F",
-        "#FF00AF"
+        "#FF00AF",
     )
 
     RGB = (
@@ -78,7 +78,7 @@ class Spectrum(List[Color]):
         "rgb(255, 75, 0)",
         "rgb(255, 0, 0)",
         "rgb(255, 0, 95)",
-        "rgb(255, 0, 175)"
+        "rgb(255, 0, 175)",
     )
 
     def __init__(self) -> None:
@@ -94,12 +94,7 @@ class Spectrum(List[Color]):
             title="[b #ffffff]Gradient Colors[/]",
             show_footer=False,
             show_header=True,
-            row_styles=(
-                [
-                    "on #1f1f1f",
-                    "on #000000"
-                ]
-            )
+            row_styles=(["on #1f1f1f", "on #000000"]),
         )
         for color in self.COLORS:
             assert color.triplet, "ColorTriplet must not be None"

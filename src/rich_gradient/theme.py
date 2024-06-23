@@ -1,4 +1,5 @@
 """A container for style information, used by `gradient.Gradient'."""
+
 from typing import Dict, Tuple
 
 from rich.console import Console
@@ -30,7 +31,7 @@ class GradientTheme:
     @property
     def theme(self) -> Theme:
         return self._theme
-    
+
     @theme.setter
     def theme(self, theme: Theme = Theme(DEFAULT_STYLES)) -> None:
         self._theme = theme
@@ -41,11 +42,11 @@ class GradientTheme:
         if self._styles is None:
             self._styles: Dict[str, StyleType] = DEFAULT_STYLES
         return self._styles
-    
+
     @styles.setter
-    def styles(self, styles: Dict[str, StyleType]=DEFAULT_STYLES) -> None:
+    def styles(self, styles: Dict[str, StyleType] = DEFAULT_STYLES) -> None:
         """Set the style of the theme.
-        
+
         Args:
             style(Dict[str, StyleType]): The styles of the theme."""
         assert styles, "Cannot set styles to None."

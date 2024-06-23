@@ -1,7 +1,7 @@
 [project]
 name = "rich_gradient"
 version = "0.0.1"
-description = "Rich_ryeGradient automates the printing gradient colored text to the console."
+description = "Rich_Gradient automates the printing gradient colored text to the console."
 authors = [
     { name = "Max Ludden", email = "dev@maxludden.com" }
 ]

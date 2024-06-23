@@ -756,28 +756,23 @@ def example(record: bool = False) -> None:
     console = Console(theme=theme, record=record)
     tr_install(console=console)
 
-    console.print(
-        styles_table(),
-        justify="center"
-    )
+    console.print(styles_table(), justify="center")
 
 
 def get_log(
-    console: Optional[Console] = None,
-    width: Optional[int] = None,
-    record: bool = False) -> Any:
+    console: Optional[Console] = None, width: Optional[int] = None, record: bool = False
+) -> Any:
     """Generate a log and console."""
     from rich_gradient.log import Log
+
     if not width:
         _console = Console()
         width = _console.width
-    
-    console = console or Console(
-        theme=Theme(DEFAULT_STYLES),
-        record=record
-    )
+
+    console = console or Console(theme=Theme(DEFAULT_STYLES), record=record)
     tr_install(console=console)
     return Log(console=console)
+
 
 if __name__ == "__main__":
     example()

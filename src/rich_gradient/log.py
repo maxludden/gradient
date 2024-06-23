@@ -36,7 +36,7 @@ from rich_gradient.run import Run, run
 
 HOME = Path.home()
 CWD = Path(__file__).parent.parent.parent
-LOGS_DIR: Path = CWD / 'logs'
+LOGS_DIR: Path = CWD / "logs"
 FORMAT: str = """{time:hh:mm:ss:SSS A} | {extra[run_padding1]}Run {extra[run]}{extra[run_padding2]} | {file.name: ^13} | Line {line: ^5} | {level: ^8} ﰲ  {message}"""
 
 
@@ -137,7 +137,7 @@ class Log:
             "enqueue": True,
         },
         {
-            "sink":str((LOGS_DIR / "info.log").resolve()),
+            "sink": str((LOGS_DIR / "info.log").resolve()),
             "level": "INFO",
             "mode": "w",
             "format": FORMAT,
@@ -188,7 +188,7 @@ class Log:
         },
     ]
     CWD = Path(__file__).parent.parent.parent
-    LOGS_DIR: Path = CWD / 'logs'
+    LOGS_DIR: Path = CWD / "logs"
 
     def __init__(
         self,
