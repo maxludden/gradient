@@ -838,7 +838,7 @@ log: Log = Log(
     progress=progress,
     logger=_logger,
 )
-
+log.disable("gradient")
 
 if __name__ == "__main__":
     import time

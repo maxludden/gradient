@@ -7,13 +7,9 @@ from typing import List, Tuple
 from rich.style import Style
 from rich.table import Table
 from rich.text import Text
+from pydantic_extra_types.color import ColorType
 
-from gradient import get_log
-from gradient._color import Color, ColorType
-
-
-log = get_log()
-console = log.console
+from gradient.color import Color
 
 
 class Spectrum(List[Color]):
@@ -152,8 +148,8 @@ class Spectrum(List[Color]):
 
 
 if __name__ == "__main__":
-    log = get_log(width=64)
-    console = log.console
+    from rich.console import Console
+    console = Console(width=64)
     console.line(2)
     console.print(Spectrum(), justify="center")
     console.line(2)

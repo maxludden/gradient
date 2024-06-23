@@ -1,3 +1,17 @@
+"""
+The Color class provides a way to represent colors in a way that can be used in a terminal.
+
+It heavily relies on the `pydantic` library for type checking and validation. It also uses the `rich` library for terminal styling and rendering. This
+allow the user to specify colors in 3 or 6 digit hex format, RGB format, or by CSS3 color names in addition to the standard rich colors.
+
+Color definitions are used as per the CSS3
+[CSS Color Module Level 3](http://www.w3.org/TR/css3-color/#svg-color) specification.
+
+A few colors have multiple names referring to the sames colors, eg. `grey` and `gray` or `aqua` and `cyan`.
+
+In these cases the _last_ color when sorted alphabetically takes preferences,
+eg. `Color((0, 255, 255)).as_named() == 'cyan'` because "cyan" comes after "aqua".
+"""
 # ruff: noqa: F401
 import math
 import re
@@ -14,13 +28,10 @@ from rich.console import Console
 from rich.style import Style
 from rich.table import Table
 from rich.text import Text
-
-from gradient.log import log
-
+from rich.color_triplet import ColorTriplet
 
 class Color(PyColor):
     def __init__(self, value: PyColorType) -> None:
-        log.debug(f"Color: {value}")
         if value in self.COLORS_BY_NAME:
             value = self.COLORS_BY_NAME[value]
         super().__init__(value)
@@ -177,6 +188,24 @@ class Color(PyColor):
             link=link,
             meta=meta,
         )
+
+    @property
+    def hex(self) -> str:
+        return self.as_hex()
+    
+    @property
+    def rgb(self) -> str:
+        return self.as_rgb()
+
+    @property
+    def triplet(self) -> ColorTriplet:
+        return self.as_triplet()
+
+    def as_triplet(self) -> ColorTriplet:
+        red = int(self._rgba.r * 255)
+        green = int(self._rgba.g * 255)
+        blue = int(self._rgba.b * 255)
+        return ColorTriplet(red, green, blue)
 
     def get_contrast(self) -> RichColor:
         """Generate a foreground color for the color style.

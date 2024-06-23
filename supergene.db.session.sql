@@ -1,1 +1,0 @@
-/Users/maxludden/dev/py/supergene/v5.sql

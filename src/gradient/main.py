@@ -30,9 +30,6 @@ DEFAULT_GRADIENT_MODE: GradientMode = "default"
 
 WHITESPACE_REGEX = re.compile(r"^\s+$")
 
-log: Log = get_log()
-console = log.console
-
 
 class Gradient(Text):
     """Text styled with gradient color.

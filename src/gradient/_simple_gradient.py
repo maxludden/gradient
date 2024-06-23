@@ -30,9 +30,6 @@ DEFAULT_OVERFLOW: OverflowMethod = "fold"
 WHITESPACE_REGEX = re.compile(r"^\s+$")
 
 
-_log = Log()
-log: Log = get_log()
-console: Console = log.console
 VERBOSE: bool = False
 
 
